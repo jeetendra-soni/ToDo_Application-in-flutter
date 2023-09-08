@@ -12,7 +12,7 @@ class Auth_Page extends StatefulWidget {
 class _Auth_PageState extends State<Auth_Page> {
   bool a = true;
 
-  void show(){
+  void To(){
     setState(() {
       a=!a;
     });
@@ -21,9 +21,9 @@ class _Auth_PageState extends State<Auth_Page> {
   @override
   Widget build(BuildContext context) {
     if(a){
-      return Login_Screen(show: () {  },);
+      return Login_Screen(To);
     }else{
-      return SignUp_Screen(show: () {  },);
+      return SignUp_Screen(To);
     }
   }
 }

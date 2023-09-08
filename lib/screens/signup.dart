@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_app/const/color.dart';
 import 'package:todo_app/data/auth_data.dart';
-import 'package:todo_app/screens/login.dart';
+
+
 class SignUp_Screen extends StatefulWidget {
   final VoidCallback show;
-  SignUp_Screen({Key? key, required this.show}) : super(key: key);
+  SignUp_Screen(this.show,{super.key});
 
   @override
   State<SignUp_Screen> createState() => _SignUp_ScreenState();
@@ -42,68 +42,71 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgrounColors,
+      // backgroundColor: backgroundColors,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 20,),
-              Image(),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 20,),
+                Image(),
 
-              //Email
-              SizedBox(height: 50,),
-              TextField(
-                controller: emailController,
-                focusNode: _focusNode1,
-                typeName: "Email",
-                icon: Icons.email,
-                obscureText: false,
-              ),
-
-              //password
-              SizedBox(height: 20,),
-              TextField(
-                  controller: passwordController,
-                  focusNode: _focusNode2,
-                  typeName: "Password",
-                  icon: Icons.lock_person,
-                  obscureText: false
-              ),
-
-              //Confirm password
-              SizedBox(height: 20,),
-              TextField(
-                  controller: c_passwordController,
-                  focusNode: _focusNode3,
-                  typeName: "Confirm Password",
-                  icon: Icons.lock_person,
-                  obscureText: true
-              ),
-
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text("Do you have an account? ", style: TextStyle(color: Colors.grey.shade700, fontSize: 14),),
-                    TextButton(
-                      onPressed: widget.show,
-                      child: Text("Login", style: TextStyle(color: Colors.deepOrangeAccent, fontSize: 14))),
-                  ],
+                //Email
+                SizedBox(height: 50,),
+                TextField(
+                  controller: emailController,
+                  focusNode: _focusNode1,
+                  typeName: "Email",
+                  icon: Icons.email,
+                  obscureText: false,
                 ),
-              ),
 
-              //Login button
-              SizedBox(height: 20,),
-              InkWell(
-                onTap: (){
-                  AuthenticationRemote().register(emailController.text, passwordController.text, c_passwordController.text);
-                },
-                child: button(name: "Sign Up")
-              ),
+                //password
+                SizedBox(height: 20,),
+                TextField(
+                    controller: passwordController,
+                    focusNode: _focusNode2,
+                    typeName: "Password",
+                    icon: Icons.lock_person,
+                    obscureText: false
+                ),
 
-            ],
+                //Confirm password
+                SizedBox(height: 20,),
+                TextField(
+                    controller: c_passwordController,
+                    focusNode: _focusNode3,
+                    typeName: "Confirm Password",
+                    icon: Icons.lock_person,
+                    obscureText: true
+                ),
+
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text("Do you have an account? ", style: TextStyle(color: Colors.blueGrey, fontSize: 14),),
+                      TextButton(
+                        onPressed: widget.show,
+                        child: Text("Login", style: TextStyle(color: Colors.deepOrangeAccent, fontSize: 14))),
+                    ],
+                  ),
+                ),
+
+                //Login button
+                SizedBox(height: 20,),
+                InkWell(
+                  onTap: (){
+                    print("SignUp Button Pressed");
+                    AuthenticationRemote().register(emailController.text, passwordController.text, c_passwordController.text);
+                  },
+                  child: button(name: "Sign Up")
+                ),
+
+              ],
+            ),
           ),
         ),
       ),
@@ -154,12 +157,12 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
           obscureText: obscureText,
           style: TextStyle(fontSize: 18, color: Colors.black),
           decoration: InputDecoration(
-            prefixIcon: Icon(icon, color: focusNode.hasFocus? Colors.deepOrangeAccent:Colors.grey.shade400,),
+            prefixIcon: Icon(icon, color: focusNode.hasFocus? Colors.deepOrangeAccent:Colors.blueGrey),
             contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             labelText: typeName,
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(color: Colors.grey.shade400, width: 2.0)
+                borderSide: BorderSide(color: Colors.blueGrey, width: 2.0)
             ),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),

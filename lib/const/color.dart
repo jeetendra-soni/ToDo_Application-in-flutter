@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
 
 
-Color backgrounColors = Colors.grey.shade100;
+Color backgroundColors = Colors.grey.shade100;
